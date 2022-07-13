@@ -21,7 +21,7 @@ class Books(db.Model):
     author = db.Column(db.String, nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String, nullable=False)
-    cover = db.Column(db.url, nullable=False)
+    cover = db.Column(db.Url, nullable=False)
 
     def __init__(self, name, price, author, description, cover):
         self.name = name
