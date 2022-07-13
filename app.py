@@ -23,7 +23,7 @@ class Books(db.Model):
     description = db.Column(db.String, nullable=False)
     cover = db.Column(db.url, nullable=False)
 
-    def __init__(self, name, price, author, description):
+    def __init__(self, name, price, author, description, cover):
         self.name = name
         self.price = price
         self.author = author
