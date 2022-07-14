@@ -64,7 +64,7 @@ def book_id(id):
         db.session.delete(book)
         db.session.commit()
     
-        return books_schemas.jsonify(book)
+        return book_schema.jsonify(book)
     elif request.method == "PUT":
         name = request.json['name']
         author = request.json['author']
