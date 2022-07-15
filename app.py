@@ -1,3 +1,4 @@
+from pydoc import describe
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
@@ -21,7 +22,7 @@ class Books(db.Model):
     author = db.Column(db.String, nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String, nullable=False)
-    img_url = db.Column(db.String, nullable=False)
+    img_url = db.Column(db.String, nullable=True)
 
     def __init__(self, name, price, author, description, img_url):
         self.name = name
@@ -37,7 +38,7 @@ class BookSchema(ma.Schema):
 book_schema = BookSchema()
 books_schema = BookSchema(many=True)
 
-@app.route("/book/add", methods=["POST"])
+@app.route("/add-book", methods=["POST"])
 def add_book():
     name = request.json.get("name")
     author = request.json.get("author")
