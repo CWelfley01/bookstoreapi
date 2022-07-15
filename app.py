@@ -22,14 +22,14 @@ class Books(db.Model):
     author = db.Column(db.String, nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String, nullable=False)
-    # img_url = db.Column(db.String, nullable=True)
+    
 
     def __init__(self, name, price, author, description):
         self.name = name
         self.price = price
         self.author = author
         self.description = description
-        # self.img_url = img_url
+        
 
 class BookSchema(ma.Schema):
     class Meta:
@@ -44,7 +44,7 @@ def add_book():
     author = request.json.get("author")
     description = request.json.get("description")
     price = request.json.get("price")
-    # img_url = request.json.get("img_url")
+    
 
     record = Books(name, price, author, description)
     
@@ -71,13 +71,12 @@ def book_id(id):
         author = request.json['author']
         price = request.json['price']
         description = request.json['description']
-        # img_url = request.json['img_url']
+       
 
         book.name = name
         book.author = author
         book.price = price
         book.description = description
-        # book.img_url = img_url
 
         db.session.commit()
         return book_schema.jsonify(book)
